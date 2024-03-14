@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Objects tracker</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-</head>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 <body>
-    <script type="text/babel">
-         class App extends React.Component {
-        render() {
-          return <%
-        }
-      }
-      </script>
+  <main id="main">  
+  <% if(objects.length) { %>
+      <% objects.forEach(({ name, coordsX, coordsY}) => { %>
+      <div class="object" style="left: <%= coordsX %>px; top: <%= coordsY %>px;"><div class="relative"><div class="info">
+        <h1><%= name %></h1>
+          <p>X:<%= coordsX %></p>
+          <p>Y:<%= coordsY %></p>
+      </div></div></div> 
+      <% }) %>
+      <% } %>
+  </main>
+  <div id="scaling"><button id="minus-scale" onclick="javascript: minusScale();">-</button><button id="plus-scale" onclick="javascript: plusScale();">+</button></div>
+      <script src="./js/scaling.js"></script>
 </body>
 </html>

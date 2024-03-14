@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const objectsSchema = new Schema({
+const objectSchema = new Schema({
     name:{
         type: String,
         required: true
@@ -14,9 +14,9 @@ const objectsSchema = new Schema({
         type: Number,
         required: true,
     }
-});
+}, { timestamps: true });
 
 
 
-const Objects = mongoose.model('objectsCollection', objectsSchema);
-module.exports = Objects;
+const Object = mongoose.model('Object', objectSchema);
+module.exports = Object;

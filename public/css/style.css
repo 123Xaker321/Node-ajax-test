@@ -1,7 +1,54 @@
-.object{
-    border: solid 1px transparent;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(red, white);
+body,
+html,
+main {
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+}
+.object {
+  position: absolute;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(red, white);
+  z-index: -4;
+}
+#scaling {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+button {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 10px 1px black;
+  transition-duration: 0.7s;
+  z-index: -2;
+}
+button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  transition-duration: 0.7s;
+}
+.relative {
+  width: 270px;
+  height: 150px;
+  position: relative;
+}
+.info {
+  position: absolute;
+  right: 0;
+  background-color: black;
+  padding: 2px;
+  border: 1px solid black;
+  color: white;
+  border-radius: 5px;
+  width: 120px;
+  height: 150px;
+  z-index: -1;
 }
