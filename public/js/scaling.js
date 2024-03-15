@@ -1,5 +1,5 @@
 const main = document.getElementById('main');
-main.style.zoom = "10%";
+main.style.zoom = "30%";
 function minusScale(){
     let zoomNumb = Number(main.style.zoom.replace('%', ''));
     main.style.zoom = (zoomNumb - 20).toString() + "%";
