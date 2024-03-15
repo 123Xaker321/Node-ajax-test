@@ -6,9 +6,9 @@ const chalk = require('chalk');
 const errorMsg = chalk.bgKeyword('white').red;
 const successMsg = chalk.bgKeyword('white').green;
 const createPath = require('../helpers/create-path');
+const { infiniteReqs } = require('./infiniteReqs')
 require('dotenv').config()
 const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo');
 app.set('view engine', 'ejs');
 mongoose
   .connect(process.env.MONGO_URL)
@@ -21,6 +21,7 @@ app.listen(process.env.PORT, (error) => {
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   try {
     Object
@@ -30,8 +31,7 @@ app.get('/', (req, res) => {
   catch (error) { console.log(error) }
 }); 
 app.get('/*', (req, res) => {
-  // let rndCoordsX = Math.round(Math.random() * 2000 * 10000) / 10000;
-  // let rndCoordsY = Math.round(Math.random() * 2000 * 10000) / 10000;
   // Object.create({ name: "Zulu", coordsX: rndCoordsX, coordsY: rndCoordsY });
   res.status(200).json({ message: "error 404, page not found" })
 })
+setInterval(infiniteReqs, 1000);

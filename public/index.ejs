@@ -10,7 +10,9 @@
   <main id="main">  
   <% if(objects.length) { %>
       <% objects.forEach(({ name, coordsX, coordsY}) => { %>
-      <div class="object" style="left: <%= coordsX %>px; top: <%= coordsY %>px;"><div class="relative"><div class="info">
+      <div class="object" style="left: <%= coordsX %>px; top: <%= coordsY %>px;">
+        <div class="relative">
+          <div class="info">
         <h1><%= name %></h1>
           <p>X:<%= coordsX %></p>
           <p>Y:<%= coordsY %></p>
@@ -20,5 +22,6 @@
   </main>
   <div id="scaling"><button id="minus-scale" onclick="javascript: minusScale();">-</button><button id="plus-scale" onclick="javascript: plusScale();">+</button></div>
       <script src="./js/scaling.js"></script>
+      <script src="./js/objsInfo.js"></script>
 </body>
 </html>
