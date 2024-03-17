@@ -30,6 +30,11 @@ app.get('/', (req, res) => {
   }
   catch (error) { console.log(error) }
 }); 
+app.get('/getObjects', (req, res) => {
+  Object
+  .find()
+  .then((objects) => res.json({ objects }));
+});
 app.get('/*', (req, res) => {
   // Object.create({ name: "Zulu", coordsX: rndCoordsX, coordsY: rndCoordsY });
   res.status(200).json({ message: "error 404, page not found" })

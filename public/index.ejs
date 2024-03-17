@@ -22,6 +22,37 @@
   </main>
   <div id="scaling"><button id="minus-scale" onclick="javascript: minusScale();">-</button><button id="plus-scale" onclick="javascript: plusScale();">+</button></div>
       <script src="./js/scaling.js"></script>
-      <script src="./js/objsInfo.js"></script>
+      <script>
+        // Функция для отправки AJAX запроса на сервер
+        function fetchObjects() {
+          fetch('/getObjects') // Маршрут на сервере, который вы должны настроить
+            .then(response => response.json())
+            .then(data => {
+              // Обновление содержимого страницы с полученными данными
+              const main = document.getElementById('main');
+              main.innerHTML = '';
+              data.objects.forEach(obj => {
+                const { name, coordsX, coordsY } = obj;
+                const div = document.createElement('div');
+                div.className = 'object';
+                div.style.left = coordsX + 'px';
+                div.style.top = coordsY + 'px';
+                div.innerHTML = `
+                  <div class="relative">
+                    <div class="info">
+                      <h1>${name}</h1>
+                      <p>X: ${coordsX}</p>
+                      <p>Y: ${coordsY}</p>
+                    </div>
+                  </div>`;
+                main.appendChild(div);
+              });
+            })
+            .catch(error => console.error('Ошибка:', error));
+        }
+  
+        // Вызов функции fetchObjects каждую секунду для обновления данных
+        setInterval(fetchObjects, 1000);
+      </script>
 </body>
 </html>
